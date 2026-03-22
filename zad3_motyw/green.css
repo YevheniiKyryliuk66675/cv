@@ -45,3 +45,10 @@ footer {
     text-align: center;
     padding: 15px;
 }
+img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto;
+}
