@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>CV - Yevhenii Kyryliuk</title>
+    <title>Yevhenii Kyryliuk (66675) - CV</title>
 
     <link id="theme" rel="stylesheet" href="green.css">
 </head>
@@ -10,11 +10,11 @@
 <body>
 
 <header>
-    <img src="./photo.jpg" alt="Zdjęcie profilowe" class="profile">
+    <img src="photo.jpg" alt="Zdjęcie profilowe" class="profile">
 
     <div>
-        <h1>Yevhenii Kyryliuk (YK)</h1>
-        <p>Indeks: 66675</p>
+        <h1>Yevhenii Kyryliuk</h1>
+        <p>66675</p>
     </div>
 </header>
 
@@ -27,23 +27,52 @@
 
 <br><br>
 
+<button onclick="toggleSection('kontakt')">Pokaż/Ukryj Kontakt</button>
+<button onclick="toggleSection('omnie')">Pokaż/Ukryj O mnie</button>
 <button onclick="toggleSection('umiejetnosci')">Pokaż/Ukryj Umiejętności</button>
 <button onclick="toggleSection('doswiadczenie')">Pokaż/Ukryj Doświadczenie</button>
+
+<hr>
+
+<section id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Email: kkuruliukevgeniy@gmail.com</p>
+    <p>Telefon: +48 731 390 675</p>
+    <p>Miasto: Warszawa</p>
+
+    <p>
+        <a href="https://www.linkedin.com/in/yevhenii-kyryliuk-bb5644260" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/YevheniiKyryliuk66675/cv" target="_blank">GitHub</a>
+    </p>
+</section>
+
+<hr>
+
+<section id="omnie">
+    <h2>O mnie</h2>
+    <p>
+        Mam 20 lat. Pochodzę z Ukrainy i mieszkam w Warszawie.
+        Jestem studentem informatyki.
+    </p>
+</section>
 
 <hr>
 
 <section id="umiejetnosci">
     <h2>Umiejętności</h2>
     <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Podstawy JavaScript</li>
+        <li>C#, Java, Python, HTML</li>
+        <li>SQL</li>
+        <li>Visual Studio</li>
     </ul>
 </section>
 
+<hr>
+
 <section id="doswiadczenie">
     <h2>Doświadczenie</h2>
-    <p>Student informatyki</p>
+    <p><strong>McDonald's</strong></p>
+    <p>2024–2025</p>
 </section>
 
 <script src="script.js"></script>
