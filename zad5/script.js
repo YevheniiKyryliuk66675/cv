@@ -1,3 +1,24 @@
+function setTheme(color) {
+    const theme = document.getElementById("theme");
+
+    if (color === "green") {
+        theme.href = "green.css";
+    } else {
+        theme.href = "red.css";
+    }
+}
+
+function toggleSection(id) {
+    const section = document.getElementById(id);
+
+    if (section.style.display === "none") {
+        section.style.display = "block";
+    } else {
+        section.style.display = "none";
+    }
+}
+
+
 document.getElementById("contactForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -11,7 +32,6 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     document.querySelectorAll(".error").forEach(el => el.textContent = "");
     document.getElementById("successMessage").textContent = "";
 
-    // Imię
     if (imie === "") {
         document.getElementById("errorImie").textContent = "Imię jest wymagane";
         isValid = false;
@@ -20,7 +40,6 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         isValid = false;
     }
 
-    // Nazwisko
     if (nazwisko === "") {
         document.getElementById("errorNazwisko").textContent = "Nazwisko jest wymagane";
         isValid = false;
@@ -29,7 +48,6 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         isValid = false;
     }
 
-    // Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (email === "") {
@@ -40,13 +58,11 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         isValid = false;
     }
 
-    // Wiadomość
     if (wiadomosc === "") {
         document.getElementById("errorWiadomosc").textContent = "Wiadomość jest wymagana";
         isValid = false;
     }
 
-    // Sukces
     if (isValid) {
         document.getElementById("successMessage").textContent = "Formularz wysłany poprawnie!";
         document.getElementById("contactForm").reset();
