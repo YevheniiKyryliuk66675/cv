@@ -1,0 +1,21 @@
+{
+  "imie": "Yevhenii",
+  "nazwisko": "Kyryliuk",
+  "inicjaly": "YK",
+  "indeks": "66675",
+
+  "umiejetnosci": [
+    "C#",
+    "Java",
+    "Python",
+    "HTML",
+    "SQL",
+    "Visual Studio"
+  ],
+
+  "projekty": [
+    "Strona CV",
+    "Formularz kontaktowy",
+    "Zmiana motywu strony"
+  ]
+}
