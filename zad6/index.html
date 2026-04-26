@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Yevhenii Kyryliuk (66675) - CV</title>
+
+    <link id="theme" rel="stylesheet" href="green.css">
+</head>
+
+<body>
+
+<header>
+    <img src="photo.jpg" alt="Zdjęcie profilowe" class="profile">
+
+    <div>
+        <h1 id="name"></h1>
+        <p id="index"></p>
+    </div>
+</header>
+
+<hr>
+
+<h2>Sterowanie</h2>
+
+<button onclick="setTheme('green')">Motyw zielony</button>
+<button onclick="setTheme('red')">Motyw czerwony</button>
+
+<br><br>
+
+<button onclick="toggleSection('kontakt')">Kontakt</button>
+<button onclick="toggleSection('omnie')">O mnie</button>
+<button onclick="toggleSection('umiejetnosci')">Umiejętności</button>
+<button onclick="toggleSection('projekty')">Projekty</button>
+<button onclick="toggleSection('formularz')">Formularz</button>
+
+<hr>
+
+<section id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Email: kkuruliukevgeniy@gmail.com</p>
+    <p>Telefon: +48 731 390 675</p>
+    <p>Miasto: Warszawa</p>
+
+    <p>
+        <a href="https://www.linkedin.com/in/yevhenii-kyryliuk-bb5644260" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/YevheniiKyryliuk66675/cv" target="_blank">GitHub</a>
+    </p>
+</section>
+
+<hr>
+
+<section id="omnie">
+    <h2>O mnie</h2>
+    <p>Mam 20 lat. Pochodzę z Ukrainy i mieszkam w Warszawie. Jestem studentem informatyki.</p>
+</section>
+
+<hr>
+
+<section id="umiejetnosci">
+    <h2>Umiejętności</h2>
+    <ul id="skillsList"></ul>
+</section>
+
+<hr>
+
+<section id="projekty">
+    <h2>Projekty</h2>
+    <ul id="projectsList"></ul>
+</section>
+
+<hr>
+
+<section id="formularz">
+    <h2>Formularz kontaktowy</h2>
+
+    <form id="contactForm">
+
+        <label>Imię:</label><br>
+        <input type="text" id="imie"><br>
+        <span class="error" id="errorImie"></span><br>
+
+        <label>Nazwisko:</label><br>
+        <input type="text" id="nazwisko"><br>
+        <span class="error" id="errorNazwisko"></span><br>
+
+        <label>Email:</label><br>
+        <input type="text" id="email"><br>
+        <span class="error" id="errorEmail"></span><br>
+
+        <label>Wiadomość:</label><br>
+        <textarea id="wiadomosc"></textarea><br>
+        <span class="error" id="errorWiadomosc"></span><br><br>
+
+        <button type="submit">Wyślij</button>
+
+    </form>
+
+    <p id="successMessage"></p>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
