@@ -19,6 +19,7 @@ function toggleSection(id) {
 }
 
 
+
 fetch("data.json")
     .then(response => response.json())
     .then(data => {
@@ -30,6 +31,7 @@ fetch("data.json")
             "Indeks: " + data.indeks;
 
         const skillsList = document.getElementById("skillsList");
+        skillsList.innerHTML = "";
 
         data.umiejetnosci.forEach(skill => {
             const li = document.createElement("li");
@@ -38,6 +40,7 @@ fetch("data.json")
         });
 
         const projectsList = document.getElementById("projectsList");
+        projectsList.innerHTML = "";
 
         data.projekty.forEach(project => {
             const li = document.createElement("li");
@@ -46,7 +49,8 @@ fetch("data.json")
         });
 
     })
-    .catch(error => console.error("Błąd:", error));
+    .catch(error => console.error("Błąd JSON:", error));
+
 
 
 
