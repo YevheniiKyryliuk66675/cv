@@ -1,22 +1,30 @@
 let tasks = [];
 
 
-function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+function showSection(id) {
+    const sections = document.querySelectorAll(".section");
+
+    sections.forEach(sec => sec.classList.remove("active"));
+
+    document.getElementById(id).classList.add("active");
 }
 
+// 🔹 MOTYW
 function setTheme(color) {
     document.getElementById("theme").href = color + ".css";
 }
 
-// 🔹 LOCAL STORAGE
+
 window.addEventListener("load", function () {
+    showSection("about");
+
     const saved = localStorage.getItem("tasks");
     if (saved) {
         tasks = JSON.parse(saved);
         renderTasks();
     }
 });
+
 
 function addTask() {
     const input = document.getElementById("taskInput");
@@ -61,35 +69,51 @@ function renderTasks() {
 
 
 function validateForm() {
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    const errorBox = document.getElementById("formErrors");
 
     let errors = [];
 
-    // wymagane pola
-    if (!firstName) errors.push("Imię jest wymagane");
-    if (!lastName) errors.push("Nazwisko jest wymagane");
-    if (!email) errors.push("Email jest wymagany");
-    if (!message) errors.push("Wiadomość jest wymagana");
+    // reset
+    [firstName, lastName, email, message].forEach(el => {
+        el.style.border = "1px solid #ccc";
+    });
 
-    
     const nameRegex = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+$/;
-
-    if (firstName && !nameRegex.test(firstName))
-        errors.push("Imię nie może zawierać cyfr");
-
-    if (lastName && !nameRegex.test(lastName))
-        errors.push("Nazwisko nie może zawierać cyfr");
-
-   
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (email && !emailRegex.test(email))
-        errors.push("Niepoprawny email");
+    if (!firstName.value.trim()) {
+        errors.push("Podaj imię");
+        firstName.style.border = "2px solid red";
+    } else if (!nameRegex.test(firstName.value)) {
+        errors.push("Imię nie może zawierać cyfr");
+        firstName.style.border = "2px solid red";
+    }
 
-    const errorBox = document.getElementById("formErrors");
+    if (!lastName.value.trim()) {
+        errors.push("Podaj nazwisko");
+        lastName.style.border = "2px solid red";
+    } else if (!nameRegex.test(lastName.value)) {
+        errors.push("Nazwisko nie może zawierać cyfr");
+        lastName.style.border = "2px solid red";
+    }
+
+    if (!email.value.trim()) {
+        errors.push("Podaj email");
+        email.style.border = "2px solid red";
+    } else if (!emailRegex.test(email.value)) {
+        errors.push("Niepoprawny email");
+        email.style.border = "2px solid red";
+    }
+
+    if (!message.value.trim()) {
+        errors.push("Podaj wiadomość");
+        message.style.border = "2px solid red";
+    }
 
     if (errors.length > 0) {
         errorBox.innerHTML = errors.join("<br>");
@@ -97,8 +121,14 @@ function validateForm() {
         return false;
     }
 
+    errorBox.innerHTML = "✅ Formularz wysłany poprawnie!";
     errorBox.style.color = "green";
-    errorBox.innerText = "Formularz wysłany poprawnie!";
+
+    // czyszczenie
+    firstName.value = "";
+    lastName.value = "";
+    email.value = "";
+    message.value = "";
 
     return false;
 }
