@@ -1,8 +1,15 @@
 let tasks = [];
 
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+}
+
+
 function setTheme(color) {
     document.getElementById("theme").href = color + ".css";
 }
+
 
 window.addEventListener("load", function () {
     const saved = localStorage.getItem("tasks");
@@ -12,7 +19,6 @@ window.addEventListener("load", function () {
         renderTasks();
     }
 });
-
 
 function addTask() {
     const input = document.getElementById("taskInput");
@@ -27,18 +33,15 @@ function addTask() {
     input.value = "";
 }
 
-
 function deleteTask(index) {
     tasks.splice(index, 1);
     saveTasks();
     renderTasks();
 }
 
-
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
-
 
 function renderTasks() {
     const list = document.getElementById("taskList");
@@ -56,4 +59,29 @@ function renderTasks() {
         li.appendChild(btn);
         list.appendChild(li);
     });
+}
+
+
+function validateForm() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    if (name.length < 2) {
+        alert("Imię za krótkie");
+        return false;
+    }
+
+    if (!email.includes("@")) {
+        alert("Niepoprawny email");
+        return false;
+    }
+
+    if (message.length < 5) {
+        alert("Wiadomość za krótka");
+        return false;
+    }
+
+    document.getElementById("formInfo").innerText = "Formularz wysłany!";
+    return false; // blokuje przeładowanie
 }
