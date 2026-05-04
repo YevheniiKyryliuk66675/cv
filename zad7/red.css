@@ -27,3 +27,9 @@ input, textarea {
     margin: 5px 0;
     padding: 8px;
 }
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+}
