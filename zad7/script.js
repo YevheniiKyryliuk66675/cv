@@ -9,7 +9,7 @@ function showSection(id) {
     document.getElementById(id).classList.add("active");
 }
 
-// 🔹 MOTYW
+
 function setTheme(color) {
     document.getElementById("theme").href = color + ".css";
 }
@@ -78,7 +78,7 @@ function validateForm() {
 
     let errors = [];
 
-    // reset
+   
     [firstName, lastName, email, message].forEach(el => {
         el.style.border = "1px solid #ccc";
     });
@@ -124,7 +124,7 @@ function validateForm() {
     errorBox.innerHTML = "✅ Formularz wysłany poprawnie!";
     errorBox.style.color = "green";
 
-    // czyszczenie
+   
     firstName.value = "";
     lastName.value = "";
     email.value = "";
