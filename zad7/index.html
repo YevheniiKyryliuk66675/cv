@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>CV + Local Storage</title>
+    <title>CV + Projekt</title>
 
     <link id="theme" rel="stylesheet" href="green.css">
 </head>
@@ -18,21 +18,23 @@
     </div>
 </header>
 
+<!-- 🔥 MENU -->
+<nav>
+    <button onclick="scrollToSection('about')">O mnie</button>
+    <button onclick="scrollToSection('skills')">Umiejętności</button>
+    <button onclick="scrollToSection('projects')">Projekty</button>
+    <button onclick="scrollToSection('contact')">Kontakt</button>
+</nav>
+
 <hr>
 
-<h2>Sterowanie</h2>
-
-<button onclick="setTheme('green')">Zielony</button>
-<button onclick="setTheme('red')">Czerwony</button>
-
-<hr>
-
-<section>
+<!-- 🔹 SEKCJE -->
+<section id="about">
     <h2>O mnie</h2>
-    <p>Student, zainteresowany tworzeniem stron internetowych.</p>
+    <p>Jestem studentem zainteresowanym tworzeniem stron internetowych.</p>
 </section>
 
-<section>
+<section id="skills">
     <h2>Umiejętności</h2>
     <ul>
         <li>HTML</li>
@@ -41,16 +43,42 @@
     </ul>
 </section>
 
-<hr>
+<section id="projects">
+    <h2>Projekty</h2>
+    <p>Moje projekty będą tutaj.</p>
+</section>
 
+<!-- 🔥 LOCAL STORAGE -->
 <section>
-    <h2>Moje zadania (Local Storage)</h2>
+    <h2>Moje zadania</h2>
 
     <input type="text" id="taskInput" placeholder="Dodaj zadanie...">
     <button onclick="addTask()">Dodaj</button>
 
     <ul id="taskList"></ul>
 </section>
+
+<!-- 🔥 FORMULARZ -->
+<section id="contact">
+    <h2>Kontakt</h2>
+
+    <form onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Imię" required><br>
+
+        <input type="email" id="email" placeholder="Email" required><br>
+
+        <textarea id="message" placeholder="Wiadomość" required></textarea><br>
+
+        <button type="submit">Wyślij</button>
+    </form>
+
+    <p id="formInfo"></p>
+</section>
+
+<hr>
+
+<button onclick="setTheme('green')">Zielony</button>
+<button onclick="setTheme('red')">Czerwony</button>
 
 <script src="script.js"></script>
 
