@@ -1,22 +1,19 @@
 let tasks = [];
 
-
-function showSection(id) {
+function filterSection(type) {
     const sections = document.querySelectorAll(".section");
 
-    sections.forEach(sec => sec.classList.remove("active"));
-
-    document.getElementById(id).classList.add("active");
+    sections.forEach(sec => {
+        sec.style.display = (type === "all" || sec.id === type) ? "block" : "none";
+    });
 }
-
 
 function setTheme(color) {
     document.getElementById("theme").href = color + ".css";
 }
 
-
 window.addEventListener("load", function () {
-    showSection("about");
+    filterSection("all");
 
     const saved = localStorage.getItem("tasks");
     if (saved) {
@@ -25,7 +22,6 @@ window.addEventListener("load", function () {
     }
 });
 
-
 function addTask() {
     const input = document.getElementById("taskInput");
     const value = input.value.trim();
@@ -33,7 +29,7 @@ function addTask() {
     if (!value) return;
 
     tasks.push(value);
-    saveTasks();
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     renderTasks();
 
     input.value = "";
@@ -41,83 +37,53 @@ function addTask() {
 
 function deleteTask(index) {
     tasks.splice(index, 1);
-    saveTasks();
-    renderTasks();
-}
-
-function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    renderTasks();
 }
 
 function renderTasks() {
     const list = document.getElementById("taskList");
     list.innerHTML = "";
 
-    tasks.forEach((task, index) => {
+    tasks.forEach((t, i) => {
         const li = document.createElement("li");
 
-        li.textContent = task;
+        li.textContent = t;
 
         const btn = document.createElement("button");
         btn.textContent = "Usuń";
-        btn.onclick = () => deleteTask(index);
+        btn.onclick = () => deleteTask(i);
 
         li.appendChild(btn);
         list.appendChild(li);
     });
 }
 
-
 function validateForm() {
-    const firstName = document.getElementById("firstName");
-    const lastName = document.getElementById("lastName");
+    const name = document.getElementById("firstName");
+    const surname = document.getElementById("lastName");
     const email = document.getElementById("email");
-    const message = document.getElementById("message");
-    const errorBox = document.getElementById("formErrors");
+    const msg = document.getElementById("message");
+    const out = document.getElementById("formErrors");
 
     let errors = [];
 
     const nameRegex = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // reset
-    [firstName, lastName, email, message].forEach(el => {
-        el.style.border = "1px solid #ccc";
-    });
+    if (!name.value || !nameRegex.test(name.value)) errors.push("Błąd imienia");
+    if (!surname.value || !nameRegex.test(surname.value)) errors.push("Błąd nazwiska");
+    if (!email.value || !emailRegex.test(email.value)) errors.push("Błąd email");
+    if (!msg.value) errors.push("Brak wiadomości");
 
-    if (!firstName.value || !nameRegex.test(firstName.value)) {
-        errors.push("Błąd: imię (bez cyfr, wymagane)");
-        firstName.style.border = "2px solid red";
-    }
-
-    if (!lastName.value || !nameRegex.test(lastName.value)) {
-        errors.push("Błąd: nazwisko (bez cyfr, wymagane)");
-        lastName.style.border = "2px solid red";
-    }
-
-    if (!email.value || !emailRegex.test(email.value)) {
-        errors.push("Błąd: email niepoprawny");
-        email.style.border = "2px solid red";
-    }
-
-    if (!message.value) {
-        errors.push("Błąd: wiadomość wymagana");
-        message.style.border = "2px solid red";
-    }
-
-    if (errors.length > 0) {
-        errorBox.innerHTML = errors.join("<br>");
-        errorBox.style.color = "red";
+    if (errors.length) {
+        out.innerHTML = errors.join("<br>");
+        out.style.color = "red";
         return false;
     }
 
-    errorBox.innerHTML = "✅ Formularz wysłany poprawnie!";
-    errorBox.style.color = "green";
-
-    firstName.value = "";
-    lastName.value = "";
-    email.value = "";
-    message.value = "";
+    out.innerHTML = "OK";
+    out.style.color = "green";
 
     return false;
 }
