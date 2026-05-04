@@ -5,15 +5,21 @@ body {
 }
 
 .profile {
-    width: 100px;
+    width: 120px;
     border-radius: 50%;
 }
 
-button {
+nav button {
     margin: 5px;
-    padding: 8px;
+    padding: 10px;
 }
 
-li {
+section {
+    margin-top: 20px;
+}
+
+input, textarea {
+    width: 100%;
     margin: 5px 0;
+    padding: 8px;
 }
