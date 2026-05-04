@@ -24,24 +24,23 @@
     </div>
 </header>
 
-<!-- MENU -->
+
 <nav>
-    <button onclick="scrollToSection('about')">O mnie</button>
-    <button onclick="scrollToSection('skills')">Umiejętności</button>
-    <button onclick="scrollToSection('projects')">Projekty</button>
-    <button onclick="scrollToSection('contact')">Kontakt</button>
+    <button onclick="showSection('about')">O mnie</button>
+    <button onclick="showSection('skills')">Umiejętności</button>
+    <button onclick="showSection('projects')">Projekty</button>
+    <button onclick="showSection('contact')">Kontakt</button>
 </nav>
 
 <hr>
 
-<!-- O MNIE -->
-<section id="about">
+
+<section id="about" class="section">
     <h2>O mnie</h2>
     <p>Mam 20 lat. Pochodzę z Ukrainy i mieszkam w Warszawie. Jestem studentem informatyki.</p>
 </section>
 
-<!-- UMIEJĘTNOŚCI -->
-<section id="skills">
+<section id="skills" class="section">
     <h2>Umiejętności</h2>
     <ul>
         <li>C#</li>
@@ -53,8 +52,7 @@
     </ul>
 </section>
 
-<!-- PROJEKTY -->
-<section id="projects">
+<section id="projects" class="section">
     <h2>Projekty</h2>
     <ul>
         <li>Strona CV</li>
@@ -68,18 +66,7 @@
     </p>
 </section>
 
-<!-- LOCAL STORAGE -->
-<section>
-    <h2>Moje zadania</h2>
-
-    <input type="text" id="taskInput" placeholder="Dodaj zadanie...">
-    <button onclick="addTask()">Dodaj</button>
-
-    <ul id="taskList"></ul>
-</section>
-
-<!-- KONTAKT -->
-<section id="contact">
+<section id="contact" class="section">
     <h2>Kontakt</h2>
 
     <p>Email: kkuruliukevgeniy@gmail.com</p>
@@ -89,7 +76,6 @@
     <h3>Formularz kontaktowy</h3>
 
     <form onsubmit="return validateForm()">
-
         <input type="text" id="firstName" placeholder="Imię"><br>
         <input type="text" id="lastName" placeholder="Nazwisko"><br>
         <input type="email" id="email" placeholder="Email"><br>
@@ -99,6 +85,15 @@
     </form>
 
     <p id="formErrors"></p>
+</section>
+
+<section>
+    <h2>Moje zadania</h2>
+
+    <input type="text" id="taskInput" placeholder="Dodaj zadanie...">
+    <button onclick="addTask()">Dodaj</button>
+
+    <ul id="taskList"></ul>
 </section>
 
 <script src="script.js"></script>
