@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>ZADANIE 7 - Local Storage</title>
+
+    <link id="theme" rel="stylesheet" href="green.css">
+</head>
+
+<body>
+
+<header>
+    <img src="photo.jpg" class="profile">
+
+    <div>
+        <h1>Yevh3nii Kyryliuk</h1>
+        <p>Nr albumu: 66675</p>
+    </div>
+</header>
+
+<hr>
+
+<h2>Sterowanie</h2>
+
+<button onclick="setTheme('green')">Zielony</button>
+<button onclick="setTheme('red')">Czerwony</button>
+
+<hr>
+
+<section>
+    <h2>Lista zadań (Local Storage)</h2>
+
+    <input type="text" id="taskInput" placeholder="Dodaj zadanie...">
+    <button onclick="addTask()">Dodaj</button>
+
+    <ul id="taskList"></ul>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
