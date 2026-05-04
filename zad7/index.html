@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>CV - Yevhenii Kyryliuk</title>
     <link id="theme" rel="stylesheet" href="green.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -73,22 +74,21 @@
     <p>Telefon: +48 731 390 675</p>
     <p>Miasto: Warszawa</p>
 
-<form onsubmit="return validateForm()" novalidate>
-    <input type="text" id="firstName" placeholder="Imię">
-    <div class="error" id="firstNameError"></div>
+    <form onsubmit="return validateForm()" novalidate>
+        <input type="text" id="firstName" placeholder="Imię">
+        <div class="error" id="firstNameError"></div>
 
-    <input type="text" id="lastName" placeholder="Nazwisko">
-    <div class="error" id="lastNameError"></div>
+        <input type="text" id="lastName" placeholder="Nazwisko">
+        <div class="error" id="lastNameError"></div>
 
-    <input type="email" id="email" placeholder="Email">
-    <div class="error" id="emailError"></div>
+        <input type="email" id="email" placeholder="Email">
+        <div class="error" id="emailError"></div>
 
-    <textarea id="message" placeholder="Wiadomość"></textarea>
-    <div class="error" id="messageError"></div>
+        <textarea id="message" placeholder="Wiadomość"></textarea>
+        <div class="error" id="messageError"></div>
 
-    <button type="submit">Wyślij</button>
-</form>
-    <p id="formErrors"></p>
+        <button type="submit">Wyślij</button>
+    </form>
 </section>
 
 <script src="script.js"></script>
