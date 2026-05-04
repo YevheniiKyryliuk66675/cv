@@ -30,7 +30,7 @@ function addTask() {
     const input = document.getElementById("taskInput");
     const value = input.value.trim();
 
-    if (value === "") return;
+    if (!value) return;
 
     tasks.push(value);
     saveTasks();
@@ -73,45 +73,35 @@ function validateForm() {
     const lastName = document.getElementById("lastName");
     const email = document.getElementById("email");
     const message = document.getElementById("message");
-
     const errorBox = document.getElementById("formErrors");
 
     let errors = [];
 
-   
+    const nameRegex = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // reset
     [firstName, lastName, email, message].forEach(el => {
         el.style.border = "1px solid #ccc";
     });
 
-    const nameRegex = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!firstName.value.trim()) {
-        errors.push("Podaj imię");
-        firstName.style.border = "2px solid red";
-    } else if (!nameRegex.test(firstName.value)) {
-        errors.push("Imię nie może zawierać cyfr");
+    if (!firstName.value || !nameRegex.test(firstName.value)) {
+        errors.push("Błąd: imię (bez cyfr, wymagane)");
         firstName.style.border = "2px solid red";
     }
 
-    if (!lastName.value.trim()) {
-        errors.push("Podaj nazwisko");
-        lastName.style.border = "2px solid red";
-    } else if (!nameRegex.test(lastName.value)) {
-        errors.push("Nazwisko nie może zawierać cyfr");
+    if (!lastName.value || !nameRegex.test(lastName.value)) {
+        errors.push("Błąd: nazwisko (bez cyfr, wymagane)");
         lastName.style.border = "2px solid red";
     }
 
-    if (!email.value.trim()) {
-        errors.push("Podaj email");
-        email.style.border = "2px solid red";
-    } else if (!emailRegex.test(email.value)) {
-        errors.push("Niepoprawny email");
+    if (!email.value || !emailRegex.test(email.value)) {
+        errors.push("Błąd: email niepoprawny");
         email.style.border = "2px solid red";
     }
 
-    if (!message.value.trim()) {
-        errors.push("Podaj wiadomość");
+    if (!message.value) {
+        errors.push("Błąd: wiadomość wymagana");
         message.style.border = "2px solid red";
     }
 
@@ -124,7 +114,6 @@ function validateForm() {
     errorBox.innerHTML = "✅ Formularz wysłany poprawnie!";
     errorBox.style.color = "green";
 
-   
     firstName.value = "";
     lastName.value = "";
     email.value = "";
