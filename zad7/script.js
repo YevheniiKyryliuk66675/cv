@@ -1,19 +1,17 @@
 let tasks = [];
 
-
 function setTheme(color) {
     document.getElementById("theme").href = color + ".css";
 }
 
-
-window.onload = function () {
+window.addEventListener("load", function () {
     const saved = localStorage.getItem("tasks");
 
     if (saved) {
         tasks = JSON.parse(saved);
         renderTasks();
     }
-};
+});
 
 
 function addTask() {
@@ -40,6 +38,7 @@ function deleteTask(index) {
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
 
 function renderTasks() {
     const list = document.getElementById("taskList");
