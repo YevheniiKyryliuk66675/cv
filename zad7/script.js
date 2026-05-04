@@ -73,40 +73,44 @@ function validateForm() {
     const surname = document.getElementById("lastName");
     const email = document.getElementById("email");
     const msg = document.getElementById("message");
-    const out = document.getElementById("formErrors");
 
-    let errors = [];
+    const nameError = document.getElementById("firstNameError");
+    const surnameError = document.getElementById("lastNameError");
+    const emailError = document.getElementById("emailError");
+    const msgError = document.getElementById("messageError");
+
+    let valid = true;
 
     const nameRegex = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    nameError.textContent = "";
+    surnameError.textContent = "";
+    emailError.textContent = "";
+    msgError.textContent = "";
+
     if (!name.value || !nameRegex.test(name.value)) {
-        errors.push("Imię nie może zawierać cyfr");
+        nameError.textContent = "Imię nie może zawierać cyfr";
+        valid = false;
     }
 
     if (!surname.value || !nameRegex.test(surname.value)) {
-        errors.push("Nazwisko nie może zawierać cyfr");
+        surnameError.textContent = "Nazwisko nie może zawierać cyfr";
+        valid = false;
     }
 
     if (!email.value) {
-        errors.push("Email jest wymagany");
+        emailError.textContent = "Email jest wymagany";
+        valid = false;
     } else if (!emailRegex.test(email.value)) {
-        errors.push("Email jest niepoprawny");
+        emailError.textContent = "Niepoprawny email";
+        valid = false;
     }
 
     if (!msg.value) {
-        errors.push("Wiadomość jest wymagana");
+        msgError.textContent = "Wiadomość jest wymagana";
+        valid = false;
     }
-
-    if (errors.length) {
-        out.innerHTML = errors.join("\n");
-        out.style.whiteSpace = "pre-line";
-        out.style.color = "red";
-        return false;
-    }
-
-    out.innerHTML = "OK";
-    out.style.color = "green";
 
     return false;
 }
