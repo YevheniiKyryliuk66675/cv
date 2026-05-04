@@ -6,6 +6,10 @@ function filterSection(type) {
     sections.forEach(sec => {
         sec.style.display = (type === "all" || sec.id === type) ? "block" : "none";
     });
+
+    if (type === "tasks") {
+        renderTasks();
+    }
 }
 
 function setTheme(color) {
@@ -18,8 +22,9 @@ window.addEventListener("load", function () {
     const saved = localStorage.getItem("tasks");
     if (saved) {
         tasks = JSON.parse(saved);
-        renderTasks();
     }
+
+    renderTasks();
 });
 
 function addTask() {
@@ -45,9 +50,13 @@ function renderTasks() {
     const list = document.getElementById("taskList");
     list.innerHTML = "";
 
+    if (tasks.length === 0) {
+        list.innerHTML = "<li>Brak zadań</li>";
+        return;
+    }
+
     tasks.forEach((t, i) => {
         const li = document.createElement("li");
-
         li.textContent = t;
 
         const btn = document.createElement("button");
