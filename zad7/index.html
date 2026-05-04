@@ -73,14 +73,21 @@
     <p>Telefon: +48 731 390 675</p>
     <p>Miasto: Warszawa</p>
 
-    <form onsubmit="return validateForm()">
-        <input type="text" id="firstName" placeholder="Imię"><br>
-        <input type="text" id="lastName" placeholder="Nazwisko"><br>
-        <input type="email" id="email" placeholder="Email"><br>
-        <textarea id="message" placeholder="Wiadomość"></textarea><br>
-        <button type="submit">Wyślij</button>
-    </form>
+<form onsubmit="return validateForm()" novalidate>
+    <input type="text" id="firstName" placeholder="Imię">
+    <div class="error" id="firstNameError"></div>
 
+    <input type="text" id="lastName" placeholder="Nazwisko">
+    <div class="error" id="lastNameError"></div>
+
+    <input type="email" id="email" placeholder="Email">
+    <div class="error" id="emailError"></div>
+
+    <textarea id="message" placeholder="Wiadomość"></textarea>
+    <div class="error" id="messageError"></div>
+
+    <button type="submit">Wyślij</button>
+</form>
     <p id="formErrors"></p>
 </section>
 
