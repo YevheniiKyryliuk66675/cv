@@ -80,13 +80,27 @@ function validateForm() {
     const nameRegex = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!name.value || !nameRegex.test(name.value)) errors.push("Błąd imienia");
-    if (!surname.value || !nameRegex.test(surname.value)) errors.push("Błąd nazwiska");
-    if (!email.value || !emailRegex.test(email.value)) errors.push("Błąd email");
-    if (!msg.value) errors.push("Brak wiadomości");
+    if (!name.value || !nameRegex.test(name.value)) {
+        errors.push("Imię nie może zawierać cyfr");
+    }
+
+    if (!surname.value || !nameRegex.test(surname.value)) {
+        errors.push("Nazwisko nie może zawierać cyfr");
+    }
+
+    if (!email.value) {
+        errors.push("Email jest wymagany");
+    } else if (!emailRegex.test(email.value)) {
+        errors.push("Email jest niepoprawny");
+    }
+
+    if (!msg.value) {
+        errors.push("Wiadomość jest wymagana");
+    }
 
     if (errors.length) {
-        out.innerHTML = errors.join("<br>");
+        out.innerHTML = errors.join("\n");
+        out.style.whiteSpace = "pre-line";
         out.style.color = "red";
         return false;
     }
