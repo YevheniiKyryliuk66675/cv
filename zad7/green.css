@@ -9,13 +9,17 @@ body {
     border-radius: 50%;
 }
 
-nav button {
+button {
     margin: 5px;
-    padding: 10px;
+    padding: 8px;
 }
 
-section {
-    margin-top: 20px;
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
 }
 
 input, textarea {
