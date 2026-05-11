@@ -19,6 +19,7 @@ const filePath = path.join(__dirname, "messages.json");
 
 
 app.post("/send", (req, res) => {
+    console.log("BODY:", req.body);
     try {
         const { firstName, lastName, email, message } = req.body;
 
@@ -40,7 +41,7 @@ app.post("/send", (req, res) => {
 
         let messages = [];
 
-        // jeśli plik istnieje i nie jest pusty
+        
         if (fs.existsSync(filePath)) {
             const data = fs.readFileSync(filePath, "utf8");
             if (data) {
